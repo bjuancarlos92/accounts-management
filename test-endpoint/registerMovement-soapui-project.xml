@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="941b7f64-78da-4dbe-b04f-4d190b08f032" activeEnvironment="Default" name="registerMovement" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="db17b894-239e-4cd9-9bcd-e17d5cc449bd" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:9999" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:9999</con:endpoint></con:endpoints><con:resource name="V1" path="/movement/registerMovement" id="227d74ad-6e02-4609-abed-1505b7d46d20"><con:settings/><con:parameters/><con:method name="V1 1" id="de4f14c0-6254-4f2d-ba76-772efd5a81cd" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:reg="http://localhost/accountManagment/v1/movement/registerMovement">reg:Response</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400 500</con:status><con:params/><con:element xmlns:reg="http://localhost/accountManagment/v1/movement/registerMovement">reg:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="d6765589-40ee-4bf6-9b01-e5a3f7902e1b" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9999/accountManagment/v1</con:endpoint><con:request>{
+  "date": "07/08/2022 18:37:58",
+  "movementType": "string",
+  "value": -540,
+  "balance": 0,
+  "cuenta": [
+    {
+      "idAccount": 12,
+      "cliente": {
+        "id": 2
+      }
+    }
+  ]
+}</con:request><con:originalUri>http://localhost/accountManagment/v1/movement/registerMovement</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
