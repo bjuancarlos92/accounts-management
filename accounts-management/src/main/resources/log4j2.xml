@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Properties>		
+		<Property name="logPath">/log</Property>
+		<Property name="logSize">1000MB</Property>
+		<Property name="rollingFileName">retail-adjustment</Property>
+		<Property name="consoleAppenderName">ConsoleAppender</Property>
+		<Property name="serviceName">accounts-management</Property>
+		<Property name="packageName">com.account.management</Property>
+		<Property name="LOG_PATTERN">
+			[%d{yyyy-MM-dd HH:mm:ss.SSS}][%p][%c]%notEmpty{[serviceNumber=%X{serviceNumber}]}%notEmpty{[transactionId=%X{transactionId}]}%notEmpty{[transactionTime=%X{transactionTime}]}%notEmpty{[code=%X{code}]}%notEmpty{[status=%X{status}]}%notEmpty{[message=%X{message}]}%notEmpty{[errorDetail=%X{errorDetail}]} - %m%n
+		</Property>
+	</Properties>
+	<Appenders>
+		<Console name="${consoleAppenderName}" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+		<!-- Rolling File Appender -->
+		<RollingFile name="${rollingFileName}"
+			fileName="${logPath}/${serviceName}.log"
+			filePattern="${logPath}/${serviceName}-%d{yyyy-MM-dd}.log"
+			ignoreExceptions="false">
+			<PatternLayout>
+				<Pattern>${LOG_PATTERN}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy
+					size="${logSize}" />
+			</Policies>
+			<DefaultRolloverStrategy>
+				<Delete basePath="${logPath}" maxDepth="1">
+					<IfFileName glob="*${serviceName}*" />
+					<IfLastModified age="4d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<AsyncLogger name="${packageName}" level="DEBUG"
+			includeLocation="false">
+			<AppenderRef ref="${rollingFileName}" />
+		</AsyncLogger>
+		<Root level="ERROR">
+			<AppenderRef ref="${consoleAppenderName}" />
+		</Root>
+	</Loggers>
+</Configuration>
